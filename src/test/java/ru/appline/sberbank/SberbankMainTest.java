@@ -54,7 +54,7 @@ public class SberbankMainTest {
         WebElement email = driver.findElement(By.xpath("//input[@placeholder='example@example.com']"));
         email.sendKeys("ya@ya.ru");
         WebElement phoneNumber = driver.findElement(By.id("odc-personal__phone"));
-        phoneNumber.sendKeys("123");
+        phoneNumber.sendKeys("1234567890");
 
         Thread.sleep(5000);
 
