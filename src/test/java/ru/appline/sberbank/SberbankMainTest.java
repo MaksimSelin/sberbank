@@ -13,7 +13,7 @@ public class SberbankMainTest extends Setup {
 
 
     @Test
-    public void scenario() throws InterruptedException {
+    public void scenario(){
         driver.findElement(By.xpath("//label[contains(text(), 'Карты')]")).click();
         driver.findElement(By.xpath("//li[@class='kitt-top-menu__item']/a[contains(text(), 'Дебетовые')]")).click();
         assertEquals("Check header 1", driver.findElement(By.xpath("//div[@class='kit-row']/h2")).getText(),
