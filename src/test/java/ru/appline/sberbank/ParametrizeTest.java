@@ -1,14 +1,17 @@
 package ru.appline.sberbank;
 
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
-import org.junit.Test;
-import org.openqa.selenium.*;
 
 import static org.junit.Assert.assertEquals;
 
-
-
-public class SberbankMainTest extends Setup {
+@RunWith(Parameterized.class)
+public class ParametrizeTest extends Setup{
 
 
 
@@ -36,40 +39,19 @@ public class SberbankMainTest extends Setup {
         cardName.clear();
         cardName.sendKeys("IMYA FAMILIYA");
         WebElement birthDate = driver.findElement(By.id("odc-personal__birthDate"));
-        birthDate.sendKeys("04.06.2000");
+        birthDate.sendKeys("04061991");
         WebElement email = driver.findElement(By.xpath("//input[@placeholder='example@example.com']"));
         email.sendKeys("ya@ya.ru");
         WebElement phoneNumber = driver.findElement(By.id("odc-personal__phone"));
+
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", phoneNumber);
         phoneNumber.click();
-        phoneNumber.sendKeys("(123) 456-78-90");
+        phoneNumber.sendKeys("1234567890");
 
-        assertEquals("Check lastName", lastName.getAttribute("value"), "Фамилия");
-        assertEquals("Check name", name.getAttribute("value"), "Имя");
-        assertEquals("Check middleName", middleName.getAttribute("value"),"Отчество" );
-        assertEquals("Check cardName", cardName.getAttribute("value"), "IMYA FAMILIYA");
-        assertEquals("Check birthDate", birthDate.getAttribute("value"), "04.06.2000");
-        assertEquals("Check Email", email.getAttribute("value"), "ya@ya.ru");
-        assertEquals("Check phoneNumber", phoneNumber.getAttribute("value"), "+7 (123) 456-78-90");
-
-        driver.findElement(By.xpath("//span[text()='Далее']/..")).click();
-
-
-        assertEquals("Check Error message for series",
-                driver.findElement(By.xpath("//label[text()='Серия']/../div[@class='odcui-error__text']")).getText(),
-                "Обязательное поле");
-        assertEquals("Check Error message for number",
-                driver.findElement(By.xpath("//label[text()='Номер']/../div[@class='odcui-error__text']")).getText(),
-                "Обязательное поле");
-        assertEquals("Check Error message for date of issue",
-                driver.findElement(By.xpath("//label[text()='Дата выдачи']/../div[@class='odcui-error__text']")).getText(),
-                "Обязательное поле");
-        assertEquals("Check Error message for accept",
-                driver.findElement(By.xpath("//div[text()='Я соглашаюсь на']/div[@class='odcui-error__text']")).getText(),
-                "Обязательное поле");
-
+        Thread.sleep(5000);
 
 
     }
+
 
 }
